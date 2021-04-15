@@ -4,11 +4,10 @@ from random import randint
 from licto import licto_ as licto
 import tweepy
 
-
-consumer_key = 'bgwMY7ETrRQtUJXQW50a4HFsr'
-consumer_secret_key = 'gUpSnJGMTL2mTs7oEyznrT0iUvP7IGaZgXvwl2aLetu4WfFEUs'
-access_token = '1382241545554948097-eQ4vy2hft8Od7kiONNG0JlzaXpTR08'
-access_token_secret = 'fDQUMFFyizVKtQCmKOi5bK5QJjHyWHwkdWkeTPzijPykO'
+consumer_key = ''
+consumer_secret_key = ''
+access_token = ''
+access_token_secret = ''
 auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
 auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
@@ -16,9 +15,9 @@ cg = CoinGeckoAPI()
 
 def hourly(cg):
     price = cg.get_price(ids=['bitcoin','ethereum'], vs_currencies='usd')
-    print(price)
     price_btc = str(price["bitcoin"]['usd'])
     price_eth = str(price["ethereum"]['usd'])
+    print(price)
     print(price_btc,price_eth)
     x = randint(0,len(licto))
     tweet="The current price of #Bitcoin is " + price_btc + "$USD\nThe current price of #Ethereum is " + price_eth + "$USD\n" + licto[x] + "\n$ETH $BTC" 
