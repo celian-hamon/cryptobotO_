@@ -8,10 +8,10 @@ import pprint
 cg = CoinGeckoAPI()
 
 def twitter_api():
-    consumer_key = 'bgwMY7ETrRQtUJXQW50a4HFsr'
-    consumer_secret_key = 'gUpSnJGMTL2mTs7oEyznrT0iUvP7IGaZgXvwl2aLetu4WfFEUs'
-    access_token = '1382241545554948097-eQ4vy2hft8Od7kiONNG0JlzaXpTR08'
-    access_token_secret = 'fDQUMFFyizVKtQCmKOi5bK5QJjHyWHwkdWkeTPzijPykO'
+    consumer_key = ''
+    consumer_secret_key = ''
+    access_token = ''
+    access_token_secret = ''
 
     auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
     auth.set_access_token(access_token,access_token_secret)
