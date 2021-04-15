@@ -13,13 +13,20 @@ auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 cg = CoinGeckoAPI()
 
-def bitcoin_weather(cg):
+# return random emojie if param == 1 ,if param == 2 return random sentence
+def rand(param):
+    if param == 1 :
+        return emoj[randint(0,len(emoj)-1)]
+    if param == 2 :
+        return lictoo[randint(0,len(lictoo)-1)]
+
+def crypto_weather(cg):
     price = cg.get_price(ids=['bitcoin','ethereum'], vs_currencies='usd')
     print(price)
     price_btc = str(price["bitcoin"]['usd'])
     price_eth = str(price["ethereum"]['usd'])
     print(price_btc,price_eth)
-    tweet=emoj[randint(0,len(emoj))] + "Crypto Weather" + emoj[randint(0,len(emoj))] + "\nThe current price of #Bitcoin is " + price_btc + "$USD\nThe current price of #Ethereum is " + price_eth + "$USD\n" + lictoo[randint(0,len(lictoo))] + "\n$ETH $BTC\n" + emoj[randint(0,len(emoj))] + "End of report" + emoj[randint(0,len(emoj))] 
+    tweet= rand(1) + "Crypto Weather" + rand(1) + "\nThe current price of #Bitcoin is " + price_btc + "$USD\nThe current price of #Ethereum is " + price_eth + "$USD\n" + rand(2) + "\n$ETH $BTC\n" + rand(1) + "End of report" + rand(1)
     print(tweet)
     return tweet
 
@@ -53,6 +60,6 @@ def Tweet(tweet,api,image=0):
 
 while True:
     for i in range(72):
-        Tweet(bitcoin_weather(cg),api)
+        Tweet(crypto_weather(cg),api)
         sleep(3600)
     Tweet(leaderboard(cg),api)

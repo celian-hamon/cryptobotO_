@@ -1,9 +1,7 @@
 from random import randint
 
 lictoo = [
-    'you are nice',
-    'yes eeeeeeee',
-    "yaaaaaaaaaaa"
+    'have a nice day'
 ]
 
 emoj = [
@@ -31,4 +29,3 @@ emoj = [
     '⛄',
     '🌊'
 ]
-print(emoj[len(emoj)])
