@@ -20,9 +20,9 @@ def twitter_api():
 
 def hourly(cg,api):
     price = cg.get_price(ids=['bitcoin','ethereum'], vs_currencies='usd')
-    print(price)
     price_btc = str(price["bitcoin"]['usd'])
     price_eth = str(price["ethereum"]['usd'])
+    print(price)
     print(price_btc,price_eth)
     tweet="The current price of #Bitcoin is " + price_btc + "$\nThe current price of #Ethereum is " + price_eth + "$\nhave a good day\n$ETH $BTC" 
     print(tweet)
