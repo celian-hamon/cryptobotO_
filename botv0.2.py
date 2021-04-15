@@ -1,33 +1,32 @@
 from time import sleep
 from pycoingecko import CoinGeckoAPI
 from random import randint
-from licto import licto_ as licto
+from licto import lictoo,emoj
 import tweepy
 
-consumer_key = ''
-consumer_secret_key = ''
-access_token = ''
-access_token_secret = ''
+consumer_key = 'bgwMY7ETrRQtUJXQW50a4HFsr'
+consumer_secret_key = 'gUpSnJGMTL2mTs7oEyznrT0iUvP7IGaZgXvwl2aLetu4WfFEUs'
+access_token = '1382241545554948097-eQ4vy2hft8Od7kiONNG0JlzaXpTR08'
+access_token_secret = 'fDQUMFFyizVKtQCmKOi5bK5QJjHyWHwkdWkeTPzijPykO'
 auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
 auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 cg = CoinGeckoAPI()
 
-def hourly(cg):
+def bitcoin_weather(cg):
     price = cg.get_price(ids=['bitcoin','ethereum'], vs_currencies='usd')
+    print(price)
     price_btc = str(price["bitcoin"]['usd'])
     price_eth = str(price["ethereum"]['usd'])
-    print(price)
     print(price_btc,price_eth)
-    x = randint(0,len(licto))
-    tweet="The current price of #Bitcoin is " + price_btc + "$USD\nThe current price of #Ethereum is " + price_eth + "$USD\n" + licto[x] + "\n$ETH $BTC" 
+    tweet=emoj[randint(0,len(emoj))] + "Crypto Weather" + emoj[randint(0,len(emoj))] + "\nThe current price of #Bitcoin is " + price_btc + "$USD\nThe current price of #Ethereum is " + price_eth + "$USD\n" + lictoo[randint(0,len(lictoo))] + "\n$ETH $BTC\n" + emoj[randint(0,len(emoj))] + "End of report" + emoj[randint(0,len(emoj))] 
     print(tweet)
     return tweet
 
 def nbelt(cg):
     nombre_de_crypto = 0
     all = cg.get_supported_vs_currencies()
-    for i in all:
+    for _ in all:
         nombre_de_crypto += 1
     print("nombre de crypto :",nombre_de_crypto)
     return nombre_de_crypto
@@ -42,9 +41,9 @@ def leaderboard(cg):
     cinquieme_crypto = str(market[4]['id'])
     for i in range(5):
         img_url.append(str(market[i]['image']))
-    tweet = 'curent leaderbord of crypto :\n#' + premiere_crypto + '\n#' + deuxieme_crypto + '\n#' + troisieme_crypto + '\n#' + quatrieme_crypto + '\n#' + cinquieme_crypto + "\n maybe invest ¯\_(ツ)_/¯" 
+    tweet = 'curent leaderbord of crypto :\n1rst #' + premiere_crypto + '\n2nd #' + deuxieme_crypto + '\n3rd #' + troisieme_crypto + '\n4st #' + quatrieme_crypto + '\n5st #' + cinquieme_crypto + "\n💰💰💰💰💰" 
     print(tweet)
-    return tweet,img_url
+    return tweet
 
 def Tweet(tweet,api,image=0):
     if image == 0:
@@ -53,7 +52,7 @@ def Tweet(tweet,api,image=0):
         api.update_status(status=tweet,media_ids=[])
 
 while True:
-    for i in range(168):
-        Tweet(hourly(cg),api)
+    for i in range(72):
+        Tweet(bitcoin_weather(cg),api)
         sleep(3600)
     Tweet(leaderboard(cg),api)
