@@ -22,6 +22,7 @@ def rand(param):
     if param == 2 :
         return lictoo[randint(0,len(lictoo)-1)]
 
+# tweet hourly current price of one btc and one eth in usd
 def crypto_weather(cg):
     price = cg.get_price(ids=['bitcoin','ethereum'], vs_currencies='usd')
     print(price)
@@ -32,6 +33,7 @@ def crypto_weather(cg):
     print(tweet_wth)
     return tweet_wth
 
+#return the number of crypto in the api :61
 def nbelt(cg):
     nombre_de_crypto = 0
     all = cg.get_supported_vs_currencies()
@@ -40,6 +42,7 @@ def nbelt(cg):
     print("nombre de crypto :",nombre_de_crypto)
     return nombre_de_crypto
 
+# tweet on a weekly schedule the crypto_leaderboard wich is the 5 crypto wich have the highest market cap (nmbr of token * cost of token) currently btc,eth,binance,ripple,doge
 def leaderboard(cg):
     market = cg.get_coins_markets(vs_currency='usd',per_page=5)
     premiere_crypto = str(market[0]['id'])
@@ -57,6 +60,7 @@ def leaderboard(cg):
     print(tweet_lead)
     return tweet_lead
 
+# tweet with or without images and rt 
 def Tweet(api,tweet=0,image=0,id_RT=0):
     if image == 0 :
         last_tweet = api.update_status(status=tweet)
@@ -68,8 +72,9 @@ def Tweet(api,tweet=0,image=0,id_RT=0):
         last_retweet = api.retweet(id=id_RT)
         return last_retweet
 
+# loop wich tweet each hour the crypto_weather and each week the crypto_leaderboard
 while True:
-    for i in range(72):
+    for i in range(168):
         Tweet(api,tweet=crypto_weather(cg),image="btc_eth")
         sleep(3600)
     Tweet(api,tweet=leaderboard(cg),image="merged")
