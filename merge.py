@@ -18,4 +18,3 @@ def get_img_lead(c1,c2,c3,c4,c5):
     new_image.save("images/merged.png","png")
     return 
 
-get_img_lead("btc","eth","binancecoin","ripple","dogecoin")
