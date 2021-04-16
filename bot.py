@@ -53,7 +53,7 @@ def leaderboard(cg):
     s4 = str(market[3]['symbol'])
     s5 = str(market[4]['symbol'])
     get_img_lead(c1=s1,c2=s2,c3=s3,c4=s4,c5=s5)
-    tweet_lead = 'curent leaderbord of crypto :\n1rst #' + premiere_crypto + '\n2nd #' + deuxieme_crypto + '\n3rd #' + troisieme_crypto + '\n4st #' + quatrieme_crypto + '\n5st #' + cinquieme_crypto + "\n💰💰💰💰💰" 
+    tweet_lead = 'Current leaderbord of #crypto :\n1rst #' + premiere_crypto + '\n2nd #' + deuxieme_crypto + '\n3rd #' + troisieme_crypto + '\n4st #' + quatrieme_crypto + '\n5st #' + cinquieme_crypto + "\n💰💰💰💰💰" 
     print(tweet_lead)
     return tweet_lead
 
