@@ -33,7 +33,7 @@ def crypto_weather(cg):
     print(tweet_wth)
     return tweet_wth
 
-#return the number of crypto in the api :61
+#return the number of crypto in the api :61 (useless rn but i keep it in case)
 def nbelt(cg):
     nombre_de_crypto = 0
     all = cg.get_supported_vs_currencies()
@@ -73,8 +73,19 @@ def Tweet(api,tweet=0,image=0,id_RT=0):
         return last_retweet
 
 # loop wich tweet each hour the crypto_weather and each week the crypto_leaderboard
-while True:
-    for i in range(168):
-        Tweet(api,tweet=crypto_weather(cg),image="btc_eth")
-        sleep(3600)
-    Tweet(api,tweet=leaderboard(cg),image="merged")
+def late_start(api,time):
+    real_time = time * 60
+    sleep(real_time)
+    while True:
+        for _ in range(84): # WARNING THIS IS ONE WEEK ON A 2 HR SCHEDULE
+            try :    
+                Tweet(api,tweet=crypto_weather(cg),image="btc_eth")
+            except :
+                pass 
+            sleep(7200)
+        try :
+            Tweet(api,tweet=leaderboard(cg),image="merged")
+        except : 
+            pass
+
+late_start(api,time=int(input("the program will start in : ")))
