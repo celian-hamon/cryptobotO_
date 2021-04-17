@@ -3,13 +3,14 @@ from pycoingecko import CoinGeckoAPI
 from random import randint
 from licto import lictoo,emoj
 from merge import get_img_lead
+from api import keys
 from PIL import Image
 import tweepy
 
-consumer_key = 'bgwMY7ETrRQtUJXQW50a4HFsr'
-consumer_secret_key = 'gUpSnJGMTL2mTs7oEyznrT0iUvP7IGaZgXvwl2aLetu4WfFEUs'
-access_token = '1382241545554948097-eQ4vy2hft8Od7kiONNG0JlzaXpTR08'
-access_token_secret = 'fDQUMFFyizVKtQCmKOi5bK5QJjHyWHwkdWkeTPzijPykO'
+consumer_key = str(keys[0])
+consumer_secret_key = str(keys[1])
+access_token = str(keys[2])
+access_token_secret = str(keys[3])
 auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
 auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
