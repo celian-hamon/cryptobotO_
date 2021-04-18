@@ -1,5 +1,7 @@
 from models.api import keys
 from pycoingecko import CoinGeckoAPI
+from time import sleep
+from os import remove
 import tweepy
 
 consumer_key = str(keys[0])
@@ -12,19 +14,32 @@ api = tweepy.API(auth)
 cg = CoinGeckoAPI()
 
 def auto_reply(cg,api):
+    with open("temp.txt","r") as fichier:
+        last_id = fichier.readline()
     mention = tweepy.Cursor(api.search, q='@cryptobotO_').items(1)
     for tweet in mention :
         tweet_id = tweet.id
+        last_id = int(last_id)
+        if tweet_id == last_id:
+            print("echec")
+            return tweet_id
         tweet_text = tweet.text
         crypto = str(tweet_text.replace("@cryptobotO_ ",""))
-        print(crypto)
         price = cg.get_price(ids=[crypto],vs_currencies=["usd"])
-        print(price)
         str_price = str(price[crypto]["usd"])
         new_tweet = "The price of " + crypto + " is currently " + str_price + "$USD \n dont forget to follow"
         api.update_status(status=new_tweet,in_reply_to_status_id=tweet_id,auto_populate_reply_metadata=True)
+        print("sucess")
+        remove("temp.txt")
+        with open("temp.txt","a") as fichier:
+            fichier.write(str(tweet_id))
         return tweet_id
 
+
 while True : 
-    auto_reply(cg,api)
-    break
+    try :
+        auto_reply(cg,api)
+    except :
+        print("echec2")
+        pass
+    sleep(30)
