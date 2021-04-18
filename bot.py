@@ -1,9 +1,9 @@
 from time import sleep
 from pycoingecko import CoinGeckoAPI
 from random import randint
-from licto import lictoo,emoj
-from merge import get_img_lead
-from api import keys
+from models.licto import lictoo,emoj
+from models.merge import get_img_lead
+from models.api import keys
 from PIL import Image
 import tweepy
 

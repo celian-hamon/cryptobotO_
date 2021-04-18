@@ -1,4 +1,4 @@
-from api import keys
+from models.api import keys
 from pycoingecko import CoinGeckoAPI
 import tweepy
 
