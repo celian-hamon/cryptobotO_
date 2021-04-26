@@ -11,4 +11,7 @@ exemple :
 exemple : 
 </br> ![image](https://user-images.githubusercontent.com/61624140/115119944-33aafd00-9fab-11eb-84f0-1c03e92e95bf.png)
 
+- Autoreply wich _autoreply_ to you the price of the token you asked
+<br>![image](https://user-images.githubusercontent.com/61624140/116039730-63bd6480-a66b-11eb-8344-32d8b0c6ba49.png)
+
 
